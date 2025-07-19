@@ -6,8 +6,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 export default function MyDiaryScreen() {
   return (
     <View style={styles.container}>
-      {/* 상단 바 */}
-      <View style={styles.topBar} />
 
       {/* 날짜 네비게이션 */}
       <View style={styles.dateRow}>

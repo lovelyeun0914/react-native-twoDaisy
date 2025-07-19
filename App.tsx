@@ -38,14 +38,21 @@ export default function App() {
 
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: '#6750A3',
-          tabBarInactiveTintColor: '#666',
-          tabBarStyle: {
-            backgroundColor: '#F3EDF7',
-            borderTopWidth: 0,
-            elevation: 0,
-            shadowOpacity: 0,
+          tabBarActiveTintColor: '#b7bb6a',
+          tabBarInactiveTintColor: '#b7bb6a',
+          tabBarLabelStyle: {
+            color: '#666',
           },
+              tabBarStyle: {
+              backgroundColor: '#ffffff',
+              borderTopWidth: 0,
+              elevation: 0,
+              shadowOpacity: 0,
+              height: 60,
+              // paddingTop: 10,
+              // paddingBottom: 10,
+            },
+            tabBarActiveBackgroundColor: '#fffcec',
         })}
       >
         <Tab.Screen name="홈" component={HomeScreen} />
