@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/.gitkeep",
+      "sha1": "b858cb282617fb0956d960215c8e84d1ccf909c6"
+    },
+    {
+      "path": "assets/fonts/Gaegu-Bold.ttf",
+      "sha1": "feb5773561512393b474453f69a793179ca5a1bc"
+    },
+    {
+      "path": "assets/fonts/Gaegu-Regular.ttf",
+      "sha1": "9762f395c88146197b2a8f5cafc1daf6acc72f88"
+    },
+    {
+      "path": "assets/fonts/README.md",
+      "sha1": "bf292739726a5d5b16d267f628b62c07ba982734"
+    }
+  ]
+}

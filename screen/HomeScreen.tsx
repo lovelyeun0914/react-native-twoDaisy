@@ -6,6 +6,8 @@ import {
   SafeAreaView,
   ScrollView,
   TouchableOpacity,
+  Image,
+  ImageBackground,
 } from 'react-native';
 // 색상 변환 함수
 const rgbToHex = (r: number, g: number, b: number) =>
@@ -24,53 +26,71 @@ const COLOR_ELLIPSE = rgbToHex(0.90, 0.94, 1); // #e6efff
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.container}>
+    <ImageBackground 
+      source={require('../assets/background.png')} 
+      style={styles.backgroundImage}
+      resizeMode="cover"
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <ScrollView contentContainerStyle={styles.container}>
 
-        {/* 캘린더/원형/텍스트 등 */}
-        <View style={styles.calendarSection}>
-          {['월', '화', '수', '목', '금', '토', '일'].map((day, idx) => (
-            <View key={day} style={{ alignItems: 'center' }}>
-              <Text style={styles.dayLabel}>{day}</Text>
-              {idx === 1 ? (
-                <View style={[styles.ellipse, { backgroundColor: 'transparent', borderWidth: 0 }]}>
-                  <Text style={styles.dateLabel}>{idx + 1}</Text>
-                </View>
-              ) : (
-                <View style={styles.ellipse}>
-                  <Text style={styles.dateLabel}>{idx + 1}</Text>
-                </View>
-              )}
-            </View>
-          ))}
-          {/* 캘린더, 날짜 등은 별도 컴포넌트로 분리 가능 */}
-        </View>
+          {/* 캘린더/원형/텍스트 등 */}
+          <View style={styles.calendarSection}>
+            {['월', '화', '수', '목', '금', '토', '일'].map((day, idx) => (
+              <View key={day} style={{ alignItems: 'center' }}>
+                <Text style={styles.dayLabel}>{day}</Text>
+                {idx === 1 ? (
+                  <View style={[styles.ellipse, { backgroundColor: 'transparent', borderWidth: 0 }]}>
+                    <Text style={styles.dateLabel}>{idx + 1}</Text>
+                  </View>
+                ) : (
+                  <View style={styles.ellipse}>
+                    <Text style={styles.dateLabel}>{idx + 1}</Text>
+                  </View>
+                )}
+              </View>
+            ))}
+            {/* 캘린더, 날짜 등은 별도 컴포넌트로 분리 가능 */}
+          </View>
 
-        {/* 어제 작성한 일기 */}
-        <Text style={styles.diaryTitle}>어제 작성한 일기</Text>
+          {/* 어제 작성한 일기 */}
+          <Text style={styles.diaryTitle}>어제 작성한 일기</Text>
 
-        {/* 오늘의 일기 작성 안내 + 화살표 */}
-        <View style={styles.todaySection}>
-          <Text style={styles.todayText}>오늘의 일기를 작성하세요!</Text>
-          {/* <ArrowRightIcon /> */}
-        </View>
+          {/* 오늘의 일기 작성 안내 + 화살표 */}
+          <View style={styles.todaySection}>
+            <Text style={styles.todayText}>오늘의 일기를 작성하세요!</Text>
+            {/* <ArrowRightIcon /> */}
+          </View>
 
-        {/* 본문 영역 (Rectangle 3) */}
-        <View style={styles.bodyRect} />
+          {/* 본문 영역 (Rectangle 3) */}
+          <View style={styles.bodyRect}>
+            <Image 
+              source={require('../assets/draw.png')} 
+              style={styles.bodyImage}
+              resizeMode="cover"
+            />
+          </View>
 
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  safeArea: { flex: 1, backgroundColor: COLOR_BG },
-  container: { flexGrow: 1, backgroundColor: COLOR_BG },
+  backgroundImage: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
+  safeArea: { flex: 1, backgroundColor: 'transparent' },
+  container: { flexGrow: 1, backgroundColor: 'transparent' },
   dayLabel: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 17,
+    // fontWeight: 'bold',
     color: '#333',
     marginBottom: 4,
+    fontFamily: 'Gaegu-Regular',
   },
   topBar: {
     width: '100%',
@@ -87,41 +107,50 @@ const styles = StyleSheet.create({
     width: 34,
     height: 35,
     borderRadius: 17,
-    backgroundColor: COLOR_ELLIPSE,
+    backgroundColor: '#cdd177',
     marginHorizontal: 8,
     justifyContent: 'center',
     alignItems: 'center',
   },
   dateLabel: {
+    // fontWeight: 'bold',
+
     fontSize: 16,
-    fontWeight: 'bold',
     color: '#333',
+    // fontFamily: 'Gaegu-Regular',
   },
   diaryTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    // fontWeight: 'bold',
     marginLeft: 34,
     marginTop: 20,
     color: '#000',
+    fontFamily: 'Gaegu-Bold',
   },
   todaySection: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 16,
+    marginTop: 28,
     marginLeft: 36,
     marginRight: 36,
     justifyContent: 'space-between',
   },
   todayText: {
     fontSize: 16,
-    color: '#000',
-  },
+    color: '#000'
+    },
   bodyRect: {
     width: 343,
     height: 300,
     backgroundColor: COLOR_RECT,
     alignSelf: 'center',
     marginVertical: 24,
+    borderRadius: 12,
+    overflow: 'hidden',
+  },
+  bodyImage: {
+    width: '100%',
+    height: '100%',
     borderRadius: 12,
   },
 });
